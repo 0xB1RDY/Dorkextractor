@@ -12,10 +12,10 @@ except:
 # Ascii
 print(Fore.WHITE + """                                     
    ____          _           _               _           
-  |    \ ___ ___| |_ ___ _ _| |_ ___ ___ ___| |_ ___ ___ 
+  |    \\ ___ ___| |_ ___ _ _| |_ ___ ___ ___| |_ ___ ___ 
   |  |  | . |  _| '_| -_|_'_|  _|  _| .'|  _|  _| . |  _|
   |____/|___|_| |_,_|___|_,_|_| |_| |__,|___|_| |___|_|  """ + Fore.RESET)
-print(f"                {Fore.MAGENTA}Made by Birdy{Fore.RESET}   |   {Fore.GREEN}v1.0{Fore.RESET}\n\n")
+print(f"                {Fore.MAGENTA}Made by Birdy{Fore.RESET}   |   {Fore.GREEN}v1.1{Fore.RESET}\n\n")
 
 # Initilization
 parser = argparse.ArgumentParser(description="Simple tool that is used to extract all URLs found in a Google Dork")
