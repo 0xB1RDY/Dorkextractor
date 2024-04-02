@@ -5,7 +5,9 @@
  Firstly, you need to have Python3+ installed
  <br />
  Install the needed package(s)
- ```pip install -r requirements.txt```<br />
+ ```
+ pip install -r requirements.txt
+```
 
 # 📌 Usage
  Dorkextractor is a CLI tool, so it takes arguments when the file is ran.<br />
