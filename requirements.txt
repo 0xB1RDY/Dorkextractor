@@ -1,4 +1,3 @@
 googlesearch-python
 colorama
 argparse
-os
