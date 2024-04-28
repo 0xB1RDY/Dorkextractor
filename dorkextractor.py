@@ -3,6 +3,7 @@ from googlesearch import search
 from colorama import Fore, just_fix_windows_console
 import threading
 import argparse
+import time
 
 try:
     just_fix_windows_console() # Fix windows console sometimes not working
@@ -29,18 +30,28 @@ def write_url_to_file(url, output_file):
     with open(output_file, 'a') as f:
         f.write(url + '\n')
 
-try:
-    if args.search:
-        threads = []
-        for url in search(args.search, num_results=args.amount):
-            print(url)
-            if args.output:
-                thread = threading.Thread(target=write_url_to_file, args=(url, args.output))
-                thread.start()
-                threads.append(thread)
-                continue
-        # Wait for all threads to complete
-        for thread in threads:
-            thread.join()
-except KeyboardInterrupt:
-    print(f"[{Fore.RED}-{Fore.RESET}] Search ended by user")
+def main():
+    try:
+        if args.search:
+            threads = []
+            for url in search(args.search, num_results=args.amount):
+                print(url)
+                if args.output:
+                    thread = threading.Thread(target=write_url_to_file, args=(url, args.output))
+                    thread.start()
+                    threads.append(thread)
+                    continue
+            for thread in threads:
+                thread.join()
+    except KeyboardInterrupt:
+        print(f"[{Fore.RED}-{Fore.RESET}] Search ended by user")
+    except Exception as e:
+        # Rate Limit handling
+        if "429" in str(e):
+            print(f"[{Fore.RED}-{Fore.RESET}] Too many requests. Waiting for 5 seconds before retrying...")
+            time.sleep(5)
+            main()
+        else:
+            print(f"[{Fore.RED}-{Fore.RESET}] An error occurred: {e}")
+
+main()
